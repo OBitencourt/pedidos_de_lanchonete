@@ -10,9 +10,6 @@ const app = express()
 
 
 
-
-
-
 // configuring cors to make everyone able to do requests
 
 app.use(cors())
@@ -26,7 +23,7 @@ app.use(express.json())
 // configuring routes
 
 
-
+app.use('/lanchonete', routes)
 
 
 // 404 error (not found)
