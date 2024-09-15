@@ -1,16 +1,12 @@
 const router = require('express').Router()
 
-// import controllers
+// IMPORT CONTROLLERS
 
 const CustomersControllers = require('../controllers/customers')
 const ProductsControllers = require('../controllers/products')
 const OrdersControllers = require('../controllers/orders')
 
-
-
-
-
-// products
+// PRODUCTS
 
 router.post('/products', ProductsControllers.createProduct) // create product (admin)
 
@@ -22,7 +18,7 @@ router.put('/products/:id', ProductsControllers.updateProduct) // update product
 router.delete('/products/:id', ProductsControllers.deleteProduct) // delete product (admin)
 
 
-// orders
+// ORDERS
 
 router.post('/orders', OrdersControllers.createOrder) // create order 
 
@@ -34,12 +30,12 @@ router.put('/orders/:id', OrdersControllers.updateOrderStatus) // update order s
 router.delete('/orders/:id', OrdersControllers.deleteOrder) // delte order (admin)
 
 
-// customers
+// CUSTOMERS
 
 router.post('/customers', CustomersControllers.signCustomers) // sign up of customers 
 
 router.get('/customers', CustomersControllers.listCustomers) // list all customers 
-router.get('/customers/:id', CustomersControllers.getCustomer) // see one customer details
+// router.get('/customers/:id', CustomersControllers.getCustomer) // see one customer details
 
 router.put('/customers/:id', CustomersControllers.updateCustomer) // update customer (admin)
 

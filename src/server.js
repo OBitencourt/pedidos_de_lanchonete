@@ -4,12 +4,14 @@ const express = require('express')
 const cors = require('cors')
 
 // requisitions created
-
+const db = require('./database/db')
 const routes = require('./routes/routes')
 
 const app = express()
 
+// connecting to data base
 
+db.connect()
 
 // configuring cors to make everyone able to do requests
 
