@@ -5,6 +5,7 @@ const cors = require('cors')
 
 // requisitions created
 
+const routes = require('./routes/routes')
 
 const app = express()
 

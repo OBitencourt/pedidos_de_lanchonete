@@ -5,6 +5,6 @@ const schema = new mongoose.Schema({
     price: String,
 })
 
-const Model = mongoose.Model('products', schema)
+const Model = mongoose.model('products', schema)
 
 module.exports = Model
