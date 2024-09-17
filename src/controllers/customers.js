@@ -1,5 +1,8 @@
 const CustomersModel = require('../models/customers')
 
+
+// ALREADY MADE
+
 async function signCustomers (req, res) {
     const {
         name, 
@@ -32,11 +35,18 @@ async function signCustomers (req, res) {
     })
 }
 
-
-
 async function listCustomers (req, res) {
-    console.log(req.body)
+    const  {id} = req.params
+
+    let obj = id ? { _id: id } : {}
+
+    const customers = await CustomersModel.find(obj)
+    
+    res.send(customers)
 }
+
+// TO DO
+
 
 /* async function getCustomer (req, res) {
     console.log(req.body)
