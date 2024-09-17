@@ -31,11 +31,33 @@ async function listProducts (req, res) {
 
 
 async function updateProduct (req, res) {
-    console.log(req.body)
+    const { id } = req.params
+
+    const product = await ProductsModel.findOneAndUpdate({ _id: id }, req.body, {new: true, runValidators: true})
+
+    res.send({
+        message: 'sucess',
+        product
+    })
 }
 
 async function deleteProduct (req, res) {
-    console.log(req.body)
+    const { id } = req.params 
+
+    const remove = await ProductsModel.deleteOne({ _id: id })
+
+    let message = ''
+
+    if(remove.deletedCount == 1) {
+        message = 'sucess'
+    } else {
+        message = 'error'
+    }
+   
+    res.send({
+        message,
+        remove,
+    })
 }
 
 
