@@ -65,17 +65,16 @@ async function deleteCustomer (req, res) {
     })
 }
 
-
-// TO DO
-
-
 async function updateCustomer (req, res) {
-    console.log(req.body)
+    const { id } = req.params
+
+    const customer = await CustomersModel.findOneAndUpdate({ _id: id}, req.body, {new: true, runValidators: true})
+
+    res.send({
+        message: 'sucess',
+        customer,
+    })
 }
-
-
-
-
 
 
 module.exports = {
