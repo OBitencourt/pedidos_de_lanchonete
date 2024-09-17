@@ -45,20 +45,34 @@ async function listCustomers (req, res) {
     res.send(customers)
 }
 
+
+async function deleteCustomer (req, res) {
+    const { id } = req.params
+
+    const remove = await CustomersModel.deleteOne({_id: id})
+
+    let message = ''
+
+    if(remove.deletedCount == 1) {
+        message = 'sucess'
+    } else {
+        message = 'error'
+    }
+   
+    res.send({
+        message,
+        remove,
+    })
+}
+
+
 // TO DO
 
-
-/* async function getCustomer (req, res) {
-    console.log(req.body)
-} */
 
 async function updateCustomer (req, res) {
     console.log(req.body)
 }
 
-async function deleteCustomer (req, res) {
-    console.log(req.body)
-}
 
 
 
