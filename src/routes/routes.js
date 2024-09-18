@@ -29,9 +29,11 @@ router.delete('/products/:id', ProductsControllers.deleteProduct) // delete prod
 // ORDERS
 
 router.post('/orders', OrdersControllers.createOrder) // create order 
+
 router.get('/orders', OrdersControllers.listOrders) // list all the orders (admin)
-router.get('/orders/:id', OrdersControllers.getOrder) // see one order details
+
 router.put('/orders/:id', OrdersControllers.updateOrderStatus) // update order status (admin)
+
 router.delete('/orders/:id', OrdersControllers.deleteOrder) // delte order (admin)
 
 

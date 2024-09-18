@@ -1,19 +1,35 @@
 const OrdersModel = require('../models/orders')
 
 async function createOrder (req, res) {
-    console.log(req.body)
+    const { clienteId, produtos } = req.body
+
+    const newOrder = await OrdersModel.create({
+        clienteId,
+        produtos
+    })
+
+    res.status(201).send({
+        message: 'Pedido criado com sucesso',
+        newOrder
+    })
 }
 
 async function listOrders (req, res) {
-    console.log(req.body)
-}
+    const { id } = req.params
 
-async function getOrder (req, res) {
-    console.log(req.body)
+    const obj = id ? { _id: id } : {}
+
+    const orders = await OrdersModel.find(obj)
+        .populate('clienteId', 'name')
+        .populate('produtos.produtoId', 'name')
+    
+    res.send(orders)
 }
 
 async function updateOrderStatus (req, res) {
-    console.log(req.body)
+    
+
+
 }
 
 async function deleteOrder (req, res) {
@@ -25,7 +41,6 @@ async function deleteOrder (req, res) {
 module.exports = {
     createOrder,
     listOrders,
-    getOrder,
     updateOrderStatus,
     deleteOrder
 }

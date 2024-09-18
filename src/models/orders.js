@@ -15,7 +15,9 @@ const schema = new mongoose.Schema({
                 required: true
             },
             quantidade: {
-
+                type: Number,
+                required: true,
+                min: 1
             }
         }
     ],
