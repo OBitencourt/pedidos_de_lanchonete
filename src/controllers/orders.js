@@ -27,13 +27,27 @@ async function listOrders (req, res) {
 }
 
 async function updateOrderStatus (req, res) {
-    
+    const { id } = req.params
+    const order = await OrdersModel.findOneAndUpdate({ _id: id}, req.body, {
+        new: true,
+        runValidators: true
+    })
 
-
+    res.send({
+        message: 'Pedido atualizado com sucesso',
+        order
+    })
 }
 
 async function deleteOrder (req, res) {
-    console.log(req.body)
+    const { id } = req.params
+
+    const remove = await OrdersModel.deleteOne({ _id: id})
+
+    res.send({
+        message: 'Produto excluído com sucesso',
+        remove
+    })
 }
 
 
